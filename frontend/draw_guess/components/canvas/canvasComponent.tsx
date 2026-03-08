@@ -111,6 +111,16 @@ function clearCanvas() {
 const canvasComponent = () => {
   useEffect(() => {
     setupCanvas();
+    return () => {
+      // Cleanup if needed
+      console.log("Cleaning up canvas");
+      const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+      // remove event listeners
+      canvas.removeEventListener("mousedown", () => {});
+      canvas.removeEventListener("mousemove", () => {});
+      canvas.removeEventListener("mouseup", () => {});
+      canvas.removeEventListener("mouseleave", () => {});
+    };
   }, []);
 
   return (
