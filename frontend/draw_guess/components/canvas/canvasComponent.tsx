@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
-import { RiResetLeftFill } from "react-icons/ri";
+// import { RiResetLeftFill } from "react-icons/ri";
+import { MdOutlineClear } from "react-icons/md";
 import { FaPencil, FaEraser } from "react-icons/fa6";
 
 interface DrawingConfig {
@@ -148,7 +149,7 @@ const canvasComponent = () => {
           onClick={clearCanvas}
           className="hover:scale-105 transition-transform p-2"
         >
-          <RiResetLeftFill />
+          <MdOutlineClear />
         </button>
       </div>
     </div>
