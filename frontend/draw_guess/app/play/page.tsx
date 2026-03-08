@@ -3,7 +3,7 @@ import ChatboxComponent from "../../components/chatbox/chatboxComponent";
 
 const page = () => {
   return (
-    <div className="flex justify-center items-center h-full gap-4">
+    <div className="flex gap-4 h-full max-h-[600px] mx-auto items-start">
       <CanvasComponent />
       <ChatboxComponent />
     </div>
