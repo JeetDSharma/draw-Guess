@@ -1,6 +1,13 @@
 "use client";
 import { useEffect } from "react";
 
+interface DrawingConfig {
+  color?: string;
+  width: number;
+  lineCap: "round" | "butt" | "square";
+  lineJoin: "round" | "bevel" | "miter";
+}
+
 const canvasState = {
   penActive: true,
   eraserActive: false,
@@ -10,14 +17,14 @@ const canvasState = {
   lastY: 0,
 };
 
-const penConfig = {
+const penConfig: DrawingConfig = {
   color: "#000000",
   width: 2,
   lineCap: "round" as const,
   lineJoin: "round" as const,
 };
 
-const eraserConfig = {
+const eraserConfig: DrawingConfig = {
   width: 20,
   lineCap: "round" as const,
   lineJoin: "round" as const,
@@ -30,7 +37,7 @@ function initializePen() {
   const ctx = canvas.getContext("2d")!;
   if (!ctx) return;
   ctx.globalCompositeOperation = "source-over";
-  ctx.strokeStyle = penConfig.color;
+  ctx.strokeStyle = penConfig.color || "#000000";
   ctx.lineWidth = penConfig.width;
   ctx.lineCap = penConfig.lineCap;
   ctx.lineJoin = penConfig.lineJoin;
