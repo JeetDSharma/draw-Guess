@@ -1,5 +1,7 @@
 "use client";
 import { useEffect } from "react";
+import { RiResetLeftFill } from "react-icons/ri";
+import { FaPencil, FaEraser } from "react-icons/fa6";
 
 interface DrawingConfig {
   color?: string;
@@ -96,7 +98,6 @@ function setupCanvas() {
     canvasState.isErasing = false;
   });
 
-  // Add this to setupCanvas():
   canvas.addEventListener("mouseleave", () => {
     canvasState.isDrawing = false;
     canvasState.isErasing = false;
@@ -110,19 +111,11 @@ function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// Then in JSX:
-<button onClick={clearCanvas} className="...">
-  Clear
-</button>;
-
 const canvasComponent = () => {
   useEffect(() => {
     setupCanvas();
     return () => {
-      // Cleanup if needed
-      console.log("Cleaning up canvas");
       const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-      // remove event listeners
       canvas.removeEventListener("mousedown", () => {});
       canvas.removeEventListener("mousemove", () => {});
       canvas.removeEventListener("mouseup", () => {});
@@ -141,21 +134,21 @@ const canvasComponent = () => {
       <div className="flex gap-2">
         <button
           onClick={initializePen}
-          className="hover:scale-105 transition-transform "
+          className="hover:scale-105 transition-transform p-2"
         >
-          Pen
+          <FaPencil />
         </button>
         <button
           onClick={initializeEraser}
-          className="hover:scale-105 transition-transform"
+          className="hover:scale-105 transition-transform p-2"
         >
-          Eraser
+          <FaEraser />
         </button>
         <button
           onClick={clearCanvas}
-          className="hover:scale-105 transition-transform"
+          className="hover:scale-105 transition-transform p-2"
         >
-          Clear
+          <RiResetLeftFill />
         </button>
       </div>
     </div>
